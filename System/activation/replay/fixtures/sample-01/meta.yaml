@@ -1,0 +1,19 @@
+id: sample-01
+description: >
+  Canonical Sprint-5 reference fixture. Eight synthetic signals across four
+  sources (meeting_notes, project_docs, session_learnings, tasks) driving
+  four candidates — one of which deliberately cites a hallucinated signal
+  id so apply_extract_response must reject it. Two of the surviving
+  candidates have recorded draft responses so the replay exercises every
+  stage end-to-end. user-grade rows live in grades.jsonl and drive the
+  calibration correlation in `replay`.
+created_at: "2026-04-19T14:00:00Z"
+# Frozen clock — every time-dependent decision (recency, novelty window,
+# ghost mode gating) is deterministic relative to this instant.
+now: "2026-04-19T09:00:00Z"
+# Out of ghost mode so surfacing budget actually applies. Acceptance rate
+# is set high enough to yield a 5-offer budget; rank will still only
+# produce as many offers as we have candidates.
+days_since_install: 30
+acceptance_rate: 0.65
+ghost: false

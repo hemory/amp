@@ -1,0 +1,16 @@
+# Activation ranker weights. Edit to tune.
+#
+# See §4.3 of B1_Activation_Engine_Design.md. Scores are computed as:
+#   score = w1·confidence
+#         + w2·recency_boost
+#         + w3·commitment_weight
+#         + w4·user_priority_match
+#         - w5·recent_offer_penalty
+#         - w6·rejection_penalty
+
+w1_confidence: 1.0
+w2_recency: 0.6
+w3_commitment: 1.2
+w4_user_priority: 0.8
+w5_recent_offer_penalty: 0.5
+w6_rejection_penalty: 0.7

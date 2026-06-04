@@ -1,0 +1,46 @@
+manifest_version: 1
+workflow: meeting-prep
+display_name: Meeting Prep
+workflow_hook: meeting_prep
+required_sources:
+  - id: people-pages
+    name: People pages
+    kind: directory
+    path: 05-Areas/People
+    recursive: true
+  - id: meeting-notes
+    name: Meeting notes
+    kind: directory
+    path: 00-Inbox/Meetings
+    recursive: true
+    freshness_days: 30
+  - id: project-docs
+    name: Project docs
+    kind: directory
+    path: 04-Projects
+    recursive: true
+optional_sources:
+  - id: slack-context
+    name: Slack context
+    kind: integration
+    integration: slack
+    hook_key: use_slack
+  - id: workspace-docs
+    name: Workspace docs context
+    kind: integration
+    integration: google-workspace
+    hook_key: use_google
+health_sources:
+  - id: session-learning-health
+    name: Session learning capture health
+    kind: session_learning_health
+    path: System/Session_Learnings/_health.log
+    legacy_scan: true
+    window_days: 7
+report:
+  summarize_when_healthy: true
+  include_sections:
+    - Context used
+    - Context skipped
+    - Context stale
+    - Health warnings

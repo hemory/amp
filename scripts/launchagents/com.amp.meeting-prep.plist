@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.amp.meeting-prep</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{VAULT_PATH}}/.venv/bin/python3</string>
+        <string>{{VAULT_PATH}}/scripts/meeting_prep_auto.py</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>VAULT_PATH</key>
+        <string>{{VAULT_PATH}}</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    <key>StandardOutPath</key>
+    <string>{{VAULT_PATH}}/System/Memory/meeting-prep.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{VAULT_PATH}}/System/Memory/meeting-prep-error.log</string>
+    <key>WorkingDirectory</key>
+    <string>{{VAULT_PATH}}</string>
+</dict>
+</plist>

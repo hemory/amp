@@ -1,0 +1,30 @@
+{
+  "name": "amp-ai-chief-of-staff",
+  "version": "0.1.0",
+  "description": "Amp - Personal AI Chief of Staff Kit. Install in 10 minutes, have an AI Chief of Staff by lunch.",
+  "main": "index.js",
+  "scripts": {
+    "setup": "./install.sh",
+    "test": "node scripts/test-runner.js",
+    "sync-meetings": "node scripts/sync-meetings.js"
+  },
+  "keywords": [
+    "ai",
+    "chief-of-staff",
+    "productivity",
+    "mcp",
+    "copilot-cli",
+    "claude-code",
+    "personal-assistant",
+    "knowledge-management"
+  ],
+  "author": "Amp Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "dotenv": "^16.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

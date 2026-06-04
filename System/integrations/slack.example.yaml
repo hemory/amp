@@ -1,0 +1,22 @@
+# Optional Slack intelligence configuration example.
+# Copy to System/integrations/slack.yaml and edit locally.
+# Do not commit the copied file.
+
+enabled: false
+
+channels: []
+
+scan_depth:
+  default: filtered
+  options:
+    - filtered
+    - deep
+
+privacy:
+  search_private_channels: false
+  search_dms: false
+  require_user_confirmation_for_private_search: true
+
+notes:
+  - "Use public or explicitly configured channels by default."
+  - "Do not store cookies, tokens, or exported Slack archives in this repo."

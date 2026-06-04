@@ -1,0 +1,12 @@
+# Activation Engine quiet-mode.
+#
+# Pauses the engine (including ghost-mode logging) through the `until` date
+# inclusive. After that date passes, the engine resumes automatically on
+# the next run; no need to edit this file back.
+#
+# To enable, uncomment and set a date:
+#
+# until: 2026-04-25
+# reason: "out of office"
+#
+# Both fields are optional. Missing or unparseable `until` = quiet-mode OFF.

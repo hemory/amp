@@ -1,0 +1,60 @@
+manifest_version: 1
+workflow: week-review
+display_name: Week Review
+workflow_hook: week_review
+required_sources:
+  - id: tasks
+    name: Task ledger
+    kind: file
+    path: 03-Tasks/Tasks.md
+    freshness_days: 14
+  - id: weekly-priorities
+    name: Weekly priorities
+    kind: file
+    path: 02-Week_Priorities/Week_Priorities.md
+    freshness_days: 14
+optional_sources:
+  - id: daily-reviews
+    name: Daily reviews
+    kind: directory
+    path: 07-Archives/Reviews
+    recursive: true
+    freshness_days: 7
+    optional: true
+  - id: project-docs
+    name: Project docs
+    kind: directory
+    path: 04-Projects
+    recursive: true
+    freshness_days: 14
+  - id: meeting-notes
+    name: Meeting notes
+    kind: directory
+    path: 00-Inbox/Meetings
+    recursive: true
+    freshness_days: 7
+    optional: true
+  - id: slack-intel
+    name: Slack intelligence
+    kind: integration
+    integration: slack
+    hook_key: use_slack
+  - id: workspace-context
+    name: Workspace context
+    kind: integration
+    integration: google-workspace
+    hook_key: use_google
+health_sources:
+  - id: session-learning-health
+    name: Session learning capture health
+    kind: session_learning_health
+    path: System/Session_Learnings/_health.log
+    legacy_scan: true
+    window_days: 7
+report:
+  summarize_when_healthy: true
+  include_sections:
+    - Context used
+    - Context skipped
+    - Context stale
+    - Health warnings

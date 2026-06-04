@@ -1,0 +1,41 @@
+manifest_version: 1
+workflow: daily-review
+display_name: Daily Review
+workflow_hook: daily_review
+required_sources:
+  - id: daily-plan
+    name: Today's daily plan
+    kind: directory
+    path: 00-Inbox/Plans
+    optional: true
+  - id: tasks
+    name: Task ledger
+    kind: file
+    path: 03-Tasks/Tasks.md
+    freshness_days: 7
+  - id: weekly-priorities
+    name: Weekly priorities
+    kind: file
+    path: 02-Week_Priorities/Week_Priorities.md
+    freshness_days: 7
+optional_sources:
+  - id: meeting-notes
+    name: Today's meeting notes
+    kind: directory
+    path: 00-Inbox/Meetings
+    recursive: true
+    optional: true
+health_sources:
+  - id: session-learning-health
+    name: Session learning capture health
+    kind: session_learning_health
+    path: System/Session_Learnings/_health.log
+    legacy_scan: true
+    window_days: 7
+report:
+  summarize_when_healthy: true
+  include_sections:
+    - Context used
+    - Context skipped
+    - Context stale
+    - Health warnings

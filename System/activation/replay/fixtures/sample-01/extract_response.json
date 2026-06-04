@@ -1,0 +1,38 @@
+[
+  {
+    "candidate_id": "c_sample01_001",
+    "type": "meeting_followup",
+    "summary": "Schedule 30 min with Alex on Reel #3 timeline (committed 2026-04-13, due Fri 2026-04-17)",
+    "cited_signals": ["sig_mtg_dlin_0413", "sig_proj_reels_plan"],
+    "confidence": 0.9,
+    "staleness_days": 6,
+    "action_verb": "schedule"
+  },
+  {
+    "candidate_id": "c_sample01_002",
+    "type": "commitment_reminder",
+    "summary": "Q2 narrative due 2026-04-20 — last edit 5 days ago; nudge today.",
+    "cited_signals": ["sig_task_q2narr"],
+    "confidence": 0.82,
+    "staleness_days": 0,
+    "action_verb": "draft"
+  },
+  {
+    "candidate_id": "c_sample01_003",
+    "type": "risk_flag",
+    "summary": "Project Project Project Atlas blocked on legal review since 2026-04-10 — no mitigation in 9 days.",
+    "cited_signals": ["sig_proj_atlas_status", "sig_task_legal"],
+    "confidence": 0.78,
+    "staleness_days": 9,
+    "action_verb": "review"
+  },
+  {
+    "candidate_id": "c_sample01_BAD",
+    "type": "meeting_followup",
+    "summary": "Send recap of the 2026-04-15 strategy summit to the exec team",
+    "cited_signals": ["sig_mtg_dlin_0414", "sig_hallucinated_summit"],
+    "confidence": 0.71,
+    "staleness_days": 4,
+    "action_verb": "send"
+  }
+]

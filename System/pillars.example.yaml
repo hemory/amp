@@ -1,0 +1,33 @@
+# ===================
+# Amp Strategic Pillars
+# ===================
+# Define 2-4 areas of strategic focus.
+# Define these when you're ready after onboarding. Amp starts with a temporary
+# General bucket, then you can replace it with your real focus areas here.
+# Pillars are used to:
+#   - Tag tasks with pillar alignment
+#   - Balance workload across focus areas
+#   - Link daily work to quarterly goals
+#
+# Keywords help Amp auto-suggest the right pillar when you create tasks.
+
+pillars:
+  - id: "pillar_one"
+    name: "Pillar One"
+    description: "Your first strategic focus area"
+    keywords:
+      - keyword1
+      - keyword2
+
+  - id: "pillar_two"
+    name: "Pillar Two"
+    description: "Your second strategic focus area"
+    keywords:
+      - keyword1
+      - keyword2
+
+# Priority limits (how many active tasks per priority level)
+priority_limits:
+  P0: 3   # Critical/urgent - max 3 at a time
+  P1: 5   # Important - max 5 at a time
+  P2: 10  # Normal - suggested limit

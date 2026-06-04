@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "product": "amp",
+  "manifest_kind": "update_manifest",
+  "current_release": "0.2.0",
+  "compatibility": {
+    "node": {
+      "minimum": "18.0.0"
+    },
+    "python": {
+      "minimum": "3.11",
+      "recommended": "3.12"
+    }
+  },
+  "registries": {
+    "breaking_changes": "System/breaking-changes.json"
+  },
+  "releases": [
+    {
+      "version": "0.2.0",
+      "release_date": "2026-03-08",
+      "status": "rollup",
+      "summary": "Production cleanup and safety rollup for Amp infrastructure, Copilot CLI support, Activation Engine, MCP stability, docs, templates, and test-runner guardrails.",
+      "issue_refs": [
+        "https://github.com/hemory/amp/issues/14"
+      ],
+      "entries": [
+        {
+          "id": "0.2.0-infra-cleanup",
+          "category": "infrastructure",
+          "change_type": "changed",
+          "title": "Infrastructure cleanup",
+          "summary": "Cleaned production packaging, legacy references, hooks, scripts, and ignored runtime state so the distributable vault stays production-safe.",
+          "paths": [
+            ".gitignore",
+            "AGENTS.md",
+            "CLAUDE.md.template",
+            "scripts/",
+            ".claude/"
+          ],
+          "migration_impact": "review_local_customizations",
+          "breaking_change_ids": [
+            "bc-0.2.0-meeting-intel-granola-legacy",
+            "bc-0.2.0-demo-mode-legacy",
+            "bc-0.2.0-screenpipe-legacy",
+            "bc-0.2.0-ai-setup-status-legacy",
+            "bc-0.2.0-slack-intel-rename"
+          ],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/8"
+          ]
+        },
+        {
+          "id": "0.2.0-copilot-cli-support",
+          "category": "agent_runtime",
+          "change_type": "added",
+          "title": "Copilot CLI support",
+          "summary": "Added Copilot CLI operating guidance, hook support, and documentation alongside Claude Code compatible instructions.",
+          "paths": [
+            "AGENTS.md",
+            "COPILOT_README.md",
+            "docs/copilot-cli.md",
+            ".github/hooks/"
+          ],
+          "migration_impact": "none",
+          "breaking_change_ids": [],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/9"
+          ]
+        },
+        {
+          "id": "0.2.0-activation-engine",
+          "category": "activation",
+          "change_type": "added",
+          "title": "Activation Engine",
+          "summary": "Added activation review surfaces and ignored generated runtime state so opportunity surfacing can run without committing local state.",
+          "paths": [
+            ".claude/skills/activation-review/",
+            ".gitignore"
+          ],
+          "migration_impact": "none",
+          "breaking_change_ids": [],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/11"
+          ]
+        },
+        {
+          "id": "0.2.0-mcp-stability",
+          "category": "mcp",
+          "change_type": "fixed",
+          "title": "MCP stability fixes",
+          "summary": "Improved MCP path handling and Apple EventKit stability for production installs.",
+          "paths": [
+            "core/mcp/",
+            "core/utils/"
+          ],
+          "migration_impact": "none",
+          "breaking_change_ids": [],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/10"
+          ]
+        },
+        {
+          "id": "0.2.0-docs-templates-modernization",
+          "category": "documentation",
+          "change_type": "changed",
+          "title": "Docs and templates modernization",
+          "summary": "Modernized production docs and templates for install, onboarding, integrations, skills, troubleshooting, and customization.",
+          "paths": [
+            "README.md",
+            "docs/",
+            "System/",
+            "CLAUDE.md.template"
+          ],
+          "migration_impact": "review_local_customizations",
+          "breaking_change_ids": [],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/12"
+          ]
+        },
+        {
+          "id": "0.2.0-python-test-runner-guardrail",
+          "category": "testing",
+          "change_type": "fixed",
+          "title": "Python test-runner guardrail",
+          "summary": "Updated the JavaScript test runner to detect Python 3.11+ and provide clearer dependency guidance, with Python 3.12 recommended for local validation.",
+          "paths": [
+            "scripts/test-runner.js",
+            "requirements.txt"
+          ],
+          "migration_impact": "developer_environment",
+          "breaking_change_ids": [],
+          "pr_refs": [
+            "https://github.com/hemory/amp/pull/13"
+          ]
+        }
+      ]
+    }
+  ]
+}

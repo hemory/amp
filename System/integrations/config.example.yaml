@@ -1,0 +1,64 @@
+# Amp integration configuration example.
+# Copy to System/integrations/config.yaml and edit locally.
+# Do not commit the copied file.
+
+google-workspace:
+  enabled: false
+  mcp_server: google-workspace-mcp
+  auth_type: oauth2
+  account: ""
+  labels:
+    - INBOX
+  features:
+    email_digest: false
+    email_followup: false
+    draft_and_send: false
+
+slack:
+  enabled: false
+  channels: []
+  search_private_channels: false
+  search_dms: false
+
+todoist:
+  enabled: false
+  mcp_server: todoist-mcp
+  project: ""
+
+microsoft-365:
+  enabled: false
+  mcp_server: ""
+
+jira:
+  enabled: false
+  mcp_server: ""
+
+confluence:
+  enabled: false
+  mcp_server: ""
+
+hooks:
+  daily_plan:
+    use_google: false
+    use_slack: false
+    use_tasks: true
+  daily_review:
+    use_google: false
+    use_slack: false
+    use_tasks: true
+  meeting_prep:
+    use_google: false
+    use_slack: false
+    use_people_pages: true
+  week_review:
+    use_google: false
+    use_slack: false
+    use_tasks: true
+
+tasks:
+  source_of_truth: "03-Tasks/Tasks.md"
+  external_sync: false
+
+notes:
+  credentials_location: ".env or your MCP config"
+  reminder: "Never store API keys or tokens in this file."

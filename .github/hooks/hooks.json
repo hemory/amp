@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "bash .github/hooks/copilot-session-start.sh",
+        "timeoutSec": 30
+      }
+    ],
+    "sessionEnd": [
+      {
+        "type": "command",
+        "bash": "bash .github/hooks/copilot-session-end.sh",
+        "timeoutSec": 10
+      }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "bash .github/hooks/copilot-safety-guard.sh",
+        "timeoutSec": 10
+      },
+      {
+        "type": "command",
+        "bash": "node .github/hooks/copilot-context-injector.cjs",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

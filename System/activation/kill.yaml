@@ -1,0 +1,15 @@
+# Activation Engine hard kill switch.
+#
+# Set `disabled: true` to short-circuit the engine on the next /daily-plan
+# run. Amp reverts to v1 behavior (no offers, no ghost logging, nothing).
+# No restart required.
+#
+# The optional `reason` is printed on exit; use it as a note-to-self for
+# why the engine is off.
+#
+# Example:
+#   disabled: true
+#   reason: "debugging bad offer quality"
+
+disabled: false
+reason: ""

@@ -1,0 +1,66 @@
+# Agent Registry
+# Maps task types to generic specialist agents or skills.
+
+agents:
+  repo-research-analyst:
+    category: research
+    triggers:
+      - "analyze this repo"
+      - "explore the repository"
+      - "understand the code structure"
+    capabilities: [repo-analysis, pattern-detection, architecture-review]
+    context_needs: [repo-path, question]
+
+  security-reviewer:
+    category: review
+    triggers:
+      - "security review"
+      - "audit this code"
+      - "check for vulnerabilities"
+      - "public readiness"
+    capabilities: [security-audit, secret-detection, privacy-review]
+    context_needs: [file-paths, threat-model]
+
+  writing-reviewer:
+    category: communication
+    triggers:
+      - "review this draft"
+      - "make this sound like me"
+      - "anti-ai writing pass"
+    capabilities: [voice-review, clarity-review, evidence-check]
+    context_needs: [draft, audience, channel, user-style]
+
+  meeting-intel:
+    category: chief-of-staff
+    triggers:
+      - "meeting prep"
+      - "attendee context"
+      - "meeting follow-up"
+    capabilities: [meeting-context, person-history, commitment-search]
+    context_needs: [meeting-title, attendees, date]
+
+  task-reconciler:
+    category: chief-of-staff
+    triggers:
+      - "reconcile tasks"
+      - "task drift"
+      - "mark done"
+    capabilities: [task-ledger-audit, task-id-audit, open-loop-detection]
+    context_needs: [task-scope]
+
+skills:
+  daily-plan:
+    triggers: ["plan my day", "daily plan"]
+    context_needs: [tasks, weekly-priorities, optional-calendar]
+
+  meeting-prep:
+    triggers: ["prep for meeting", "meeting context"]
+    context_needs: [people-pages, meeting-notes, project-docs]
+
+  week-review:
+    triggers: ["review my week", "weekly review"]
+    context_needs: [tasks, weekly-priorities, daily-reviews]
+
+  project-health:
+    triggers: ["project health", "status of my projects"]
+    context_needs: [project-docs, tasks]

@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0.0",
+  "product": "amp",
+  "manifest_kind": "breaking_change_registry",
+  "policy": "Entries are conservative migration signals for scripts and skills. Status values describe the rollout signal, not a guarantee that every legacy file has already been removed from every install.",
+  "entries": [
+    {
+      "id": "bc-0.2.0-meeting-intel-granola-legacy",
+      "introduced_in": "0.2.0",
+      "status": "legacy_signal",
+      "severity": "migration_notice",
+      "title": "Meeting intelligence and Granola legacy path",
+      "affected_signals": [
+        "meeting-intel",
+        "granola",
+        "granola_enabled",
+        "granola_server.py"
+      ],
+      "impact": "Local installs may still contain Granola-specific automation, config keys, logs, or references. Treat them as optional legacy integration state, not a required production default.",
+      "migration_guidance": "If a vault depends on Granola sync, preserve local automation intentionally. Otherwise prefer the standard /process-meetings workflow and remove local Granola credentials, launch agents, and generated logs after confirming no active dependency.",
+      "detection": {
+        "legacy_names": [
+          ".scripts/meeting-intel",
+          "granola_server.py",
+          "granola_enabled",
+          "meeting-intel"
+        ],
+        "replacement": "/process-meetings with production-safe meeting notes and person/task updates"
+      },
+      "linked_manifest_entries": [
+        "0.2.0-infra-cleanup"
+      ]
+    },
+    {
+      "id": "bc-0.2.0-demo-mode-legacy",
+      "introduced_in": "0.2.0",
+      "status": "legacy_signal",
+      "severity": "migration_notice",
+      "title": "Demo mode legacy surfaces",
+      "affected_signals": [
+        "amp-demo",
+        "demo-mode",
+        "demo_mode_server.py",
+        "System/Demo"
+      ],
+      "impact": "Demo fixtures and demo-mode commands are sample-only surfaces. They should not be migrated into personal production vault content unless a user explicitly wants sample data.",
+      "migration_guidance": "Keep production data separate from demo fixtures. During updates, preserve user-created content and treat demo-mode files as replaceable product samples.",
+      "detection": {
+        "legacy_names": [
+          "amp-demo",
+          "demo-mode",
+          "demo_mode_server.py",
+          "System/Demo"
+        ],
+        "replacement": "production templates and docs without personal sample data"
+      },
+      "linked_manifest_entries": [
+        "0.2.0-infra-cleanup"
+      ]
+    },
+    {
+      "id": "bc-0.2.0-screenpipe-legacy",
+      "introduced_in": "0.2.0",
+      "status": "legacy_signal",
+      "severity": "migration_notice",
+      "title": "Screenpipe setup legacy surfaces",
+      "affected_signals": [
+        "screenpipe",
+        "screenpipe-setup"
+      ],
+      "impact": "Screenpipe setup appears as a beta or optional integration signal and should not be assumed present in production installs.",
+      "migration_guidance": "Do not auto-enable Screenpipe during updates. If local notes reference Screenpipe, leave them in place and require an explicit user opt-in before configuring any capture workflow.",
+      "detection": {
+        "legacy_names": [
+          "screenpipe",
+          "screenpipe-setup",
+          ".claude/reference/beta-templates/screenpipe"
+        ],
+        "replacement": "no default replacement; explicit opt-in only"
+      },
+      "linked_manifest_entries": [
+        "0.2.0-infra-cleanup"
+      ]
+    },
+    {
+      "id": "bc-0.2.0-ai-setup-status-legacy",
+      "introduced_in": "0.2.0",
+      "status": "legacy_signal",
+      "severity": "migration_notice",
+      "title": "AI setup and status legacy skills",
+      "affected_signals": [
+        "ai-setup",
+        "ai-status"
+      ],
+      "impact": "Older setup/status skills may overlap with current setup, health-check, and update-preflight flows.",
+      "migration_guidance": "Prefer /setup for onboarding, /health-check for diagnostics, and /amp-update-preflight for update readiness. Keep local custom skill aliases only if they are intentionally maintained.",
+      "detection": {
+        "legacy_names": [
+          "ai-setup",
+          "ai-status"
+        ],
+        "replacement": "/setup, /health-check, /amp-update-preflight"
+      },
+      "linked_manifest_entries": [
+        "0.2.0-infra-cleanup"
+      ]
+    },
+    {
+      "id": "bc-0.2.0-slack-intel-rename",
+      "introduced_in": "0.2.0",
+      "status": "rename_signal",
+      "severity": "migration_notice",
+      "title": "Slack intel skill rename",
+      "affected_signals": [
+        "slack-intel-custom",
+        "slack-intel"
+      ],
+      "impact": "Local installs may reference the older slack-intel-custom name while production guidance may use slack-intel.",
+      "migration_guidance": "Prefer slack-intel as the stable command name when available. Preserve slack-intel-custom only as a local custom override or compatibility alias.",
+      "detection": {
+        "legacy_names": [
+          "slack-intel-custom"
+        ],
+        "replacement": "slack-intel"
+      },
+      "linked_manifest_entries": [
+        "0.2.0-infra-cleanup"
+      ]
+    }
+  ]
+}

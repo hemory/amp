@@ -1,0 +1,148 @@
+# ===================
+# User Data (PARA Vault)
+# ===================
+00-Inbox/
+01-Quarter_Goals/
+02-Week_Priorities/
+03-Tasks/
+04-Projects/
+05-Areas/
+06-Resources/
+!06-Resources/
+06-Resources/*
+!06-Resources/Amp_System/
+!06-Resources/Standards/
+!06-Resources/Standards/*.md
+07-Archives/
+
+# ===================
+# System Configuration (generated per-user)
+# ===================
+System/user-profile.yaml
+System/pillars.yaml
+System/People_Index.json
+System/Memory/
+!System/Memory/README.md
+System/Session_Learnings/
+!System/Session_Learnings/README.md
+System/Skill_Ratings/
+System/Demo/
+System/.amp-sessions.db
+System/usage_log.md
+System/analytics_log.jsonl
+System/.onboarding_complete
+System/pattern-model.md
+System/identity-model.md
+System/Improvement_Proposals/*.md
+!System/Improvement_Proposals/README.md
+System/Agent_Learnings/*.md
+!System/Agent_Learnings/README.md
+System/.last-learning-check
+System/cli-updates-state.json
+System/integrations/config.yaml
+System/integrations/slack.yaml
+System/integrations/.sync-state.json
+.mcp.json
+.mcp.json.bak
+.mcp.json*.bak
+!.mcp.json.template
+
+# ===================
+# Secrets & Environment
+# ===================
+.env
+.env.local
+.env.*.local
+
+# ===================
+# Dependencies
+# ===================
+node_modules/
+.venv
+.venv/
+.pytest_cache
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+
+# ===================
+# Logs & Debug
+# ===================
+*.log
+logs/
+.logs/
+.scripts/logs/
+
+# ===================
+# Runtime State
+# ===================
+System/activation/signals.jsonl
+System/activation/candidates.jsonl
+System/activation/offers.jsonl
+System/activation/tombstones.jsonl
+System/activation/response-events.jsonl
+System/activation/ghost-log.md
+System/activation/drafts/*.md
+System/activation/handshakes/
+System/activation/ghost-mode.yaml
+System/activation/post-review-pause.yaml
+System/activation/ghost-review-*.md
+System/activation/policy-state.yaml
+System/activation/install.yaml.recovered.*
+System/activation/weekly-metrics-*.json
+
+# ===================
+# Obsidian Local State
+# ===================
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+
+# ===================
+# iCloud Sync Safety
+# ===================
+.git.nosync/
+*.nosync/
+
+# ===================
+# OS Files
+# ===================
+.DS_Store
+Thumbs.db
+Pasted image*.png
+
+# ===================
+# IDE
+# ===================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===================
+# Build Artifacts
+# ===================
+dist/
+build/
+*.egg-info/
+
+# ===================
+# Activation Engine Runtime State
+# ===================
+System/activation/signals.jsonl
+System/activation/candidates.jsonl
+System/activation/offers.jsonl
+System/activation/tombstones.jsonl
+System/activation/response-events.jsonl
+System/activation/ghost-log.md
+System/activation/ghost-review-*.md
+System/activation/install.yaml
+System/activation/ghost-mode.yaml
+System/activation/post-review-pause.yaml
+System/activation/policy-state.yaml
+System/activation/*.recovered.*
+System/activation/.last-*.json
+System/activation/drafts/
+System/activation/handshakes/
+System/activation/replay/runs/

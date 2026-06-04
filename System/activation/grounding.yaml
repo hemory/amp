@@ -1,0 +1,19 @@
+# Online grounding gate (Sprint 7, C2). Tracked file — this is policy.
+#
+# Both extract and draft outputs must "anchor" enough of their claim
+# tokens in cited signal excerpts. Heuristic v1, deterministic, no LLM:
+# claim tokens = proper nouns, dates, numbers, action verbs, ≥4-char
+# nouns; for each token check (case-insensitive, light stem) presence in
+# any cited excerpt.
+#
+# overlap_ratio = anchored / total. Pass requires:
+#   overlap_ratio >= min_overlap AND anchored >= min_anchored_tokens.
+#
+# Tune per stage. Drafts are longer and need a slightly looser bar than
+# extract summaries.
+extract:
+  min_overlap: 0.4
+  min_anchored_tokens: 2
+draft:
+  min_overlap: 0.4
+  min_anchored_tokens: 3

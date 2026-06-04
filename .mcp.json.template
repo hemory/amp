@@ -1,0 +1,95 @@
+{
+  "mcpServers": {
+    "work": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/work_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "calendar": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/calendar_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "career": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/career_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "onboarding": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/onboarding_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "amp-improvements": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/improvements_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "resume": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/resume_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "update-checker": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/update_checker_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "amp-analytics": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/analytics_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "session-memory": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/session_memory_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "beta": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/beta_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "commitment": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/commitment_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "demo-mode": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/demo_mode_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    },
+    "reminders": {
+      "command": "python3",
+      "args": ["{{VAULT_PATH}}/core/mcp/reminders_server.py"],
+      "env": {
+        "VAULT_PATH": "{{VAULT_PATH}}"
+      }
+    }
+  }
+}

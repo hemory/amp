@@ -1,0 +1,25 @@
+# Amp - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# MCP Server Framework
+mcp>=1.0.0,<2.0.0
+
+# Configuration
+pyyaml>=6.0,<7.0
+
+# Date handling
+python-dateutil>=2.8.0,<3.0.0
+
+# String matching (task dedup)
+thefuzz>=0.20.0,<1.0.0
+python-Levenshtein>=0.21.0,<1.0.0
+
+# HTTP requests
+requests>=2.28.0,<3.0.0
+
+# Environment variable loading
+python-dotenv>=1.0.0,<2.0.0
+
+# Slack integration (amp_slack_bot.py)
+slack-bolt>=1.18.0,<2.0.0
+slack-sdk>=3.27.0,<4.0.0
