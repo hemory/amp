@@ -95,16 +95,17 @@ pip install -q -r requirements.txt 2>&1 | tail -1
 echo -e "${GREEN}  ✓ Python dependencies installed${NC}"
 
 # -------------------------------------------
-# Step 4: Generate .mcp.json from template
+# Step 4: Configure safe workspace MCP defaults
 # -------------------------------------------
 echo ""
 echo -e "${BOLD}[4/6] Configuring MCP servers...${NC}"
 if [ ! -f ".mcp.json" ]; then
-    sed "s|{{VAULT_PATH}}|${VAULT_PATH}|g" .mcp.json.template > .mcp.json
-    echo -e "${GREEN}  ✓ .mcp.json generated with vault path: ${VAULT_PATH}${NC}"
+    cp .mcp.json.template .mcp.json
+    echo -e "${GREEN}  ✓ .mcp.json created with workspace MCP auto-start disabled${NC}"
 else
     echo -e "${YELLOW}  ⚠ .mcp.json already exists (skipping)${NC}"
 fi
+echo -e "${CYAN}  Tip: For Copilot CLI MCP tools, run scripts/setup-copilot-mcp.sh after install.${NC}"
 
 # -------------------------------------------
 # Step 5: Create vault folders

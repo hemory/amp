@@ -6,13 +6,35 @@ Common issues and how to fix them.
 
 **Symptom:** Skills don't work, tools aren't available, "MCP" errors in output.
 
-**Cause:** `.mcp.json` is missing, malformed, or the terminal was not restarted after creation.
+**Cause:** MCP configuration is missing, malformed, or the terminal was not restarted after creation.
 
 **Fix:**
-1. Check if `.mcp.json` exists in the repo root: `ls -la .mcp.json`
-2. If missing, copy from template: `cp .mcp.json.template .mcp.json`
-3. Replace `{{VAULT_PATH}}` with your actual vault path
-4. Restart your terminal (MCP servers load on session start)
+1. For Copilot CLI, run `scripts/setup-copilot-mcp.sh` to register the curated user-level MCP servers.
+2. For first-time onboarding, run `scripts/setup-copilot-mcp.sh --with-onboarding`, then remove it after `/setup` with `scripts/setup-copilot-mcp.sh --remove-onboarding`.
+3. Keep workspace `.mcp.json` empty unless you intentionally want workspace MCP auto-start.
+4. Restart your terminal or agent session after changing MCP configuration.
+5. Run `copilot mcp list` to confirm the configured servers.
+
+## Copilot CLI Memory Spikes on Startup
+
+**Symptom:** Opening the Amp repo in Copilot CLI stalls or creates many Python processes such as `work_server.py`, `calendar_server.py`, or `session_memory_server.py`.
+
+**Cause:** Workspace MCP auto-start can repeatedly launch local Python stdio MCP servers. This is especially risky when `.mcp.json` starts many servers or uses a Python interpreter without Amp's dependencies.
+
+**Fix:**
+1. Stop the stuck Copilot session.
+2. Set workspace `.mcp.json` to:
+   ```json
+   {
+     "mcpServers": {}
+   }
+   ```
+3. Run `scripts/setup-copilot-mcp.sh` to use user-level MCP servers instead.
+4. Restart Copilot CLI.
+5. If you add optional MCP servers later, add one at a time and check process count with:
+   ```bash
+   ps -axo pid,ppid,rss,command | grep 'core/mcp' | grep -v grep
+   ```
 
 ## Python Version Mismatch
 
@@ -23,7 +45,8 @@ Common issues and how to fix them.
 **Fix:**
 1. Check your version: `python3 --version`
 2. If below 3.10, upgrade: `brew install python@3.12` (macOS)
-3. Re-run: `pip3 install -r requirements.txt`
+3. Re-run `./install.sh` so Amp's `.venv` is created and dependencies are installed.
+4. For Copilot CLI MCP tools, use `scripts/setup-copilot-mcp.sh`; it points MCP servers at `.venv/bin/python3` instead of bare `python3`.
 
 ## Node.js Version Mismatch
 
@@ -141,4 +164,3 @@ Common issues and how to fix them.
 1. Restore the old `System/usage_log.md` from backup if needed.
 2. Preview a safe merge: `python3 .scripts/merge-usage-log.py --dry-run --diff`.
 3. If the diff looks right, run: `python3 .scripts/merge-usage-log.py`.
-

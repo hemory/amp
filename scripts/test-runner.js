@@ -144,15 +144,15 @@ test('pillars.example.yaml exists', () => {
     assert(fs.existsSync(path.join(ROOT, 'System/pillars.example.yaml')), 'Missing');
 });
 
-test('.mcp.json.template has {{VAULT_PATH}} placeholders', () => {
+test('.mcp.json.template keeps workspace MCP auto-start disabled', () => {
     const content = fs.readFileSync(path.join(ROOT, '.mcp.json.template'), 'utf8');
-    assert(content.includes('{{VAULT_PATH}}'), 'No {{VAULT_PATH}} found');
+    const parsed = JSON.parse(content);
+    assert(parsed.mcpServers && Object.keys(parsed.mcpServers).length === 0, 'Workspace MCP template should be empty by default');
 });
 
-test('.mcp.json.template is valid JSON (with placeholders)', () => {
+test('.mcp.json.template is valid JSON', () => {
     const content = fs.readFileSync(path.join(ROOT, '.mcp.json.template'), 'utf8');
-    const replaced = content.replace(/\{\{VAULT_PATH\}\}/g, '/tmp/test');
-    JSON.parse(replaced);
+    JSON.parse(content);
 });
 
 test('onboarding server uses the root MCP config template', () => {
@@ -465,6 +465,18 @@ test('amp-merge-resolver helper exists and passes shell syntax', () => {
     assert(fs.existsSync(scriptPath), 'Missing .scripts/amp-merge-resolver.sh');
     const stat = fs.statSync(scriptPath);
     assert(stat.mode & 0o111, 'amp-merge-resolver.sh is not executable');
+    execSync(`bash -n "${scriptPath}"`, { encoding: 'utf8' });
+});
+
+test('setup-copilot-mcp supports temporary onboarding MCP lifecycle', () => {
+    const scriptPath = path.join(ROOT, 'scripts/setup-copilot-mcp.sh');
+    assert(fs.existsSync(scriptPath), 'Missing scripts/setup-copilot-mcp.sh');
+    const stat = fs.statSync(scriptPath);
+    assert(stat.mode & 0o111, 'setup-copilot-mcp.sh is not executable');
+    const content = fs.readFileSync(scriptPath, 'utf8');
+    assert(content.includes('--with-onboarding'), 'Script should support temporary onboarding setup');
+    assert(content.includes('--remove-onboarding'), 'Script should support onboarding cleanup');
+    assert(content.includes('amp-onboarding'), 'Script should register/remove amp-onboarding');
     execSync(`bash -n "${scriptPath}"`, { encoding: 'utf8' });
 });
 
