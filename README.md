@@ -118,7 +118,25 @@ copilot          # or: claude
 
 Type `/setup` and follow the 5-minute onboarding. Amp will ask your name, role, email domain, and communication preferences, then build your workspace and walk you through opening it in Obsidian.
 
-> **Tip:** If `/setup` doesn't respond, quit Terminal, reopen it, and try again. MCP servers load at session start.
+Copilot CLI users can optionally enable Amp MCP tools after install:
+
+```bash
+scripts/setup-copilot-mcp.sh
+```
+
+This registers a small user-level MCP set (`amp-work`, `amp-improvements`, `session-memory`) and keeps workspace `.mcp.json` empty so opening the repo does not auto-start every local MCP server.
+
+For first-time onboarding in Copilot CLI, temporarily include the onboarding MCP:
+
+```bash
+scripts/setup-copilot-mcp.sh --with-onboarding
+```
+
+After `/setup` completes, remove the setup-only server:
+
+```bash
+scripts/setup-copilot-mcp.sh --remove-onboarding
+```
 
 ## How it works
 

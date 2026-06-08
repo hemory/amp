@@ -11,7 +11,7 @@ Amp can run in GitHub Copilot CLI alongside Claude Code. The two runtimes expose
 | Hook input | Claude Code-style JSON on stdin | Copilot CLI-style JSON on stdin |
 | Project root | Usually available as `CLAUDE_PROJECT_DIR` | May be absent; adapters derive it from hook input or current directory |
 | Skills | `.claude/skills/` | Reads the same skill instructions when invoked by the runtime |
-| MCP config | Claude Code MCP settings or local `.mcp.json` | Copilot CLI MCP config, or generated local config from `.mcp.json.template` |
+| MCP config | Claude Code MCP settings or local `.mcp.json` | User-level Copilot MCP config for Amp tools; workspace `.mcp.json` stays empty by default |
 | Model selection | Claude Code runtime controls | Copilot CLI runtime controls |
 | GitHub operations | Shell, MCP, or runtime tools | Native GitHub integration and `gh` CLI are available |
 
@@ -31,7 +31,35 @@ If a future Copilot CLI-native hook replaces a legacy hook completely, keep the 
 
 ## MCP configuration
 
-Do not commit local MCP runtime files that contain machine paths or credentials. Use `.mcp.json.template` for distributable defaults, then let onboarding or the active runtime create local MCP configuration.
+Do not commit local MCP runtime files that contain machine paths or credentials. Amp keeps workspace `.mcp.json` empty by default for Copilot CLI so opening the repository does not auto-start every local Python MCP server.
+
+For Copilot CLI, configure Amp MCP tools as user-level servers:
+
+```bash
+scripts/setup-copilot-mcp.sh
+```
+
+The script registers a curated set:
+
+- `amp-work`
+- `amp-improvements`
+- `session-memory`
+
+Each server uses the repository virtualenv and sets `VAULT_PATH` plus `PYTHONPATH` explicitly. Add heavier integrations, such as calendar or resume workflows, only when needed and test them one at a time.
+
+For first-time onboarding in Copilot CLI, temporarily add the onboarding MCP:
+
+```bash
+scripts/setup-copilot-mcp.sh --with-onboarding
+```
+
+After `/setup` completes, remove the setup-only server:
+
+```bash
+scripts/setup-copilot-mcp.sh --remove-onboarding
+```
+
+Claude Code users should use Claude's MCP configuration flow, but the same principle applies: prefer the repository virtualenv, add only the MCP servers you need, and avoid broad auto-start defaults.
 
 ## Validation
 
